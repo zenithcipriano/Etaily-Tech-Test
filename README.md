@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# Task 7: Building a CRUD Application with React.js and Node.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Created for Junior Fullstack PHP+Node.JS TechTest.
+
+## Backend
+
 
 ## Available Scripts
 
