@@ -4,7 +4,7 @@ Created for Etaily's Junior Fullstack PHP+Node.JS TechTest.
 
 ## Backend
 
-### ```
+```
 cd backend
 npm i
 node ./index.js
