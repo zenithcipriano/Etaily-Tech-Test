@@ -178,6 +178,8 @@ const retrieveUser = (req, res) => {
     }
 }
 
+// Function to call for deleting user
+// Description: checks if password is correct then soft deletes
 const deleteUser = (req, res) => {
     try {
         const id = req.body.id;
@@ -235,4 +237,38 @@ const deleteUser = (req, res) => {
     }
 }
 
-export { createUser, editUser, retrieveUser, deleteUser }
+// Function to call for retrieving all users
+// Description: checks if password is correct and email is verified
+const retreiveAll = (req, res) => {
+    try {
+
+        User.find({}, (err, users) => {
+            // Error encountered
+            if(err){
+                console.log("Error encountered when searching for user.")
+                return res.send({ success: false, message: "Error encountered when searching for user." });
+
+            } else {
+                for (let i=0 ; i < users.length; i++) {
+                    const temp = users[i];
+
+                    users[i] = {
+                        fname: temp.fname,
+                        lname: temp.lname,
+                        email: temp.email,
+                        role: temp.role
+                    }
+                }
+
+                return res.send({ success: true, users});
+            }
+        })
+
+    // Catch server-side errors encountered
+    } catch (error) { 
+        console.log(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+}
+
+export { createUser, editUser, retrieveUser, deleteUser, retreiveAll }
